@@ -20,6 +20,15 @@ jobs:
         with:
           php-version: 8.1 # Choose your desired PHP version
 
+      - name: Create Temporary composer.json
+        run: |
+          echo '{
+            "name": "temp-composer-project",
+            "require": {
+              "php": "^8.1",
+            }
+          }' > composer.json
+          
       - name: Install Composer dependencies
         run: composer install
 
