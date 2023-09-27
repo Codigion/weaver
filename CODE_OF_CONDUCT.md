@@ -1,4 +1,4 @@
-# [Your Project Name] Code of Conduct
+# Weaver - Code of Conduct
 
 ## Introduction
 
