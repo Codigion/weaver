@@ -17,7 +17,7 @@ Welcome to the documentation for the Weaver MVC Framework. This guide will help 
   - [Assets](#assets)
   - [Libraries](#libraries)
   - [Helpers](#helpers)
-  - [Core](#settings)
+  - [Core](#core)
   - [Environment Variables](#environment-variables)
   - [Error Handling](#error-handling)
   - [Extensions and Customization](#extensions-and-customization)
@@ -40,6 +40,7 @@ To get started with Weaver, follow these steps:
 
 Weaver follows a well-defined directory structure to organize your project:
 
+```
 /
 ├── Configurations/
 │ ├── Routes.php
@@ -94,6 +95,7 @@ Weaver follows a well-defined directory structure to organize your project:
 ├── index.php
 ├── LICENSE
 └── README.md
+```
 
 ## Configuration
 
