@@ -1,4 +1,4 @@
-name: Generate Documentation
+name: CI/CD with Documentation Generation
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master # Adjust to your main branch name
 
 jobs:
-  generate-docs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,18 +16,26 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: 7.4 # Adjust to your PHP version
+        php-version: 8.1 # Adjust to your PHP version
+
+    - name: Create composer.json
+      run: |
+        echo '{
+            "name": "AnjaniGourisaria/weaver",
+            "require": {
+                "php": "^8.1"
+                // Add other dependencies here
+            }
+        }' > composer.json
+        export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
     - name: Install Composer dependencies
       run: |
         composer install --no-dev --optimize-autoloader
         export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
-    - name: Install phpDocumentor
-      run: |
-        composer global require phpdocumentor/phpdocumentor
-        export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-
+    # Add a step here to run tests if your project has tests.
+    
     - name: Generate Documentation
       run: phpdoc run -d ./src -t ./docs
 
@@ -41,6 +49,3 @@ jobs:
         git add ./docs
         git commit -m "Update documentation"
         git push
-
-    - name: Complete
-      run: echo "Documentation generated and pushed."
