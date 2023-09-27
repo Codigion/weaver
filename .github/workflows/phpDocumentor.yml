@@ -34,7 +34,7 @@ jobs:
 
 
         
-    - name: Check for Documentation Changes
+    - name: Check for Documentation Changes & Status
       run: |
         # Check if there are changes in the docs directory
         if [ -n "$(git status --porcelain docs)" ]; then
