@@ -1,0 +1,18 @@
+Options -Indexes
+RewriteEngine On
+
+# Block direct access to PHP files (except index.php)
+RewriteCond %{REQUEST_URI} \.php$
+RewriteCond %{REQUEST_URI} !/index\.php
+RewriteRule ^ - [F,L]
+
+# Block access to hidden files and folders
+RewriteRule (^|/)\. - [F]
+
+# Block access to .py files
+RewriteRule \.py$ - [F]
+
+# Route all requests to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

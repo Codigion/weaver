@@ -1,0 +1,5 @@
+--
+-- Database Structure
+--
+-- @Description: MySQL queries related to initialize project.
+--

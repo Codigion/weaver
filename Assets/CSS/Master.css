@@ -1,0 +1,27 @@
+/**
+ * Loading Spinner
+ *
+ * This CSS defines styles for a loading spinner element.
+ */
+
+/* Define the loading spinner */
+.loading-spinner {
+    display: none; /* Hide by Default */
+    border: 5px solid rgba(0, 0, 0, 0.3); /* Border color and width */
+    border-top: 5px solid #3498db; /* Border color of the spinner */
+    border-radius: 50%; /* Rounded shape to create a circle */
+    width: 20px; /* Width of the spinner */
+    height: 20px; /* Height of the spinner */
+    animation: spin 1s linear infinite; /* Animation */
+}
+
+/* Keyframes for the spin animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

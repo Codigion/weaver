@@ -1,0 +1,12 @@
+# Ignore .env file
+/Configurations/.env
+
+# Ignore macOS .DS_Store files
+.DS_Store
+
+# Ignore log files
+*.log
+
+# Ignore directories
+# Note: You should have a leading "/" for directory names
+/Assets/Uploads/
