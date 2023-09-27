@@ -21,10 +21,10 @@ jobs:
     - name: Create composer.json
       run: |
         echo '{
-            "name": "AnjaniGourisaria/weaver",
-            "require": {
-                "php": "^8.1"
-            }
+        "name": "anjani0x41/weaver",
+        "require": {
+        "php": "^8.1"
+        }
         }' > composer.json
         export PATH="$HOME/.config/composer/vendor/bin:$PATH"
 
