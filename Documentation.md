@@ -39,6 +39,7 @@ To get started with Weaver, follow these steps:
 ## Directory Structure
 
 Weaver follows a well-defined directory structure to organize your project:
+
 ```
 /
 ├── Configurations/
