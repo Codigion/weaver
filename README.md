@@ -1,6 +1,6 @@
-# Weaver v1.0.1 - MVC Framework
+# Weaver v1.0.1 - PHP Framework
 
-Welcome to Weaver, a PHP MVC (Model-View-Controller) Framework designed to simplify web application development. This framework provides a structured approach to building web applications while maintaining flexibility and efficiency.
+Welcome to Weaver, a PHP mini-MVC (Model-View-Controller) Framework designed to simplify web application development. This framework provides a structured approach to building web applications while maintaining flexibility and efficiency.
 
 
 ## Getting Started
