@@ -23,7 +23,7 @@ jobs:
       - name: Create Temporary composer.json
         run: |
           echo '{
-            "name": "temp-composer-project",
+            "name": "weaver/framework",
             "require": {
               "php": "^8.1"
             }
