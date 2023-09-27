@@ -36,12 +36,9 @@ jobs:
         
     - name: Check for Documentation Changes
       run: |
-        if [ -n "$(find docs -type f -newermt "$(git log -1 --format="%ad" -- docs)" 2>/dev/null)" ]; then
+        # Check if there are changes in the docs directory
+        if [ -n "$(git status --porcelain docs)" ]; then
           echo "Documentation changes detected. Committing and pushing."
-          rsync -a --delete ./docs/ ./docs_temp/
-          git checkout -- ./docs/
-          rsync -a ./docs_temp/ ./docs/
-          rm -rf ./docs_temp/
           git add ./docs
           git commit -m "Update documentation"
           git push
