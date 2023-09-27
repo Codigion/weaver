@@ -30,6 +30,7 @@ jobs:
 
     - name: Check for Documentation Changes
       run: |
+        git fetch --all
         if git diff --quiet --exit-code ./docs; then
           echo "Documentation is up to date. No changes to commit."
         else
