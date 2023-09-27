@@ -1,48 +1,43 @@
-name: Psalm Security Scan
+name: PHP CI/CD with Security Scanning
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-  schedule:
-    - cron: '35 8 * * 2'
-
-permissions:
-  contents: read
+    branches:
+      - main
 
 jobs:
-  php-security:
+  build:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Install PHP and Composer
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4' # Use the PHP version you need
-          tools: composer:v2 # Install Composer version 2
-          
-      - name: Install Psalm
+          php-version: 8.1 # Choose your desired PHP version
+
+      - name: Install Composer dependencies
+        run: composer install
+
+      - name: Run PHP_CodeSniffer
+        run: composer phpcs
+
+      - name: Run PHPStan
+        run: composer phpstan
+
+      - name: Security Scanning
         run: |
-          composer global require "vimeo/psalm"
-          echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
+          composer require sensiolabs/security-checker --dev
+          php vendor/bin/security-checker security:check
 
-      - name: Initialize Psalm
-        run: |
-          psalm --init source_folder
-
-      - name: Psalm Security Scan
-        uses: psalm/psalm-github-security-scan@f3e6fd9432bc3e44aec078572677ce9d2ef9c287
-
-      - name: Upload Security Analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@v2
+      - name: Publish Code Analysis Results
+        if: always()
+        uses: actions/upload-artifact@v2
         with:
-          sarif_file: results.sarif
+          name: code-analysis-results
+          path: |
+            phpcs.xml
+            phpstan.neon
+            security-checker-report.txt
