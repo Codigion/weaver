@@ -24,7 +24,6 @@ jobs:
             "name": "AnjaniGourisaria/weaver",
             "require": {
                 "php": "^8.1"
-                // Add other dependencies here
             }
         }' > composer.json
         export PATH="$HOME/.config/composer/vendor/bin:$PATH"
