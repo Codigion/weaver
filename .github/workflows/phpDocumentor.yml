@@ -28,15 +28,20 @@ jobs:
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
 
-    - name: Check for Documentation Changes
+    - name: Configure GitHub
       run: |
-        if git diff --quiet --exit-code ./docs; then
-          echo "Documentation is up to date. No changes to commit."
-        else
+       git diff --quiet ./docs
+
+
+        
+    - name: Check for Documentation Changes & Status
+      run: |
+        # Check if there are changes in the docs directory
+        if [ -n "$(git status --porcelain docs)" ]; then
           echo "Documentation changes detected. Committing and pushing."
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add ./Documentation
+          git add ./docs
           git commit -m "Update documentation"
           git push
+        else
+          echo "Documentation is up to date. No changes to commit."
         fi
