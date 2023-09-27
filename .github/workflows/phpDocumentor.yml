@@ -1,0 +1,35 @@
+name: CI/CD with Documentation Generation
+
+on:
+  push:
+    branches:
+      - master # Adjust to your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1 # Adjust to your PHP version
+    
+    - name: Generate Documentation
+      run: |
+        wget https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.4.1/phpDocumentor.phar
+        php phpDocumentor.phar -d . -t ./Documentation
+
+    - name: Configure Git
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+
+    - name: Commit Documentation
+      run: |
+        git add ./Documentation
+        git commit -m "Update documentation"
+        git push
