@@ -349,3 +349,45 @@ window.loadScripts = function (scriptUrls) {
         }
     });
 }
+
+/**
+ * Dynamically load multiple stylesheets in a specified order and return a Promise
+ * that resolves when all stylesheets are loaded successfully.
+ *
+ * @param {string[]} styleUrls - An array of stylesheet URLs to load.
+ * @returns {Promise} - A Promise that resolves when all stylesheets are loaded.
+ */
+window.loadStyles = function (styleUrls) {
+    return new Promise(function (resolve, reject) {
+        var loadedStyles = 0;
+
+        function loadStyle(url) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = url;
+
+            link.onload = function () {
+                loadedStyles++;
+                if (loadedStyles === styleUrls.length) {
+                    resolve();
+                }
+            };
+
+            link.onerror = function (error) {
+                reject(error);
+            };
+
+            document.head.appendChild(link);
+        }
+
+        if (styleUrls.length === 0) {
+            // No stylesheets to load, resolve immediately
+            resolve();
+        } else {
+            // Load each stylesheet in order
+            for (var i = 0; i < styleUrls.length; i++) {
+                loadStyle(styleUrls[i]);
+            }
+        }
+    });
+}
