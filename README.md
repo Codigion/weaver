@@ -14,9 +14,6 @@ Welcome to Weaver, a PHP mini-MVC (Model-View-Controller) Framework designed to 
 ## Environment
 ENVIRONMENT=development
 
-## Project Base URL
-BASE_URL=[<Project Base URL>]
-
 ## MySQL Configuration
 MYSQL_HOST=[<HOST>]
 MYSQL_USERNAME=[<USERNAME>]
