@@ -85,10 +85,6 @@ class System
                     define('ENVIRONMENT', 'development');
                 }
 
-                if (!defined('BASE_URL')) {
-                    define('BASE_URL', Generic::baseURL());
-                }
-
                 if (!defined('MYSQL_HOST')) {
                     define('MYSQL_HOST', 'localhost');
                 }
