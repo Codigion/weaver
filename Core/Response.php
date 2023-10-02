@@ -48,7 +48,7 @@ class Response
     {
         try {
             if ($filename === null) {
-                $filename = date('Y-m-d') . '.csv';
+                $filename = date('Y-m-d H:i:s') . '.csv';
             }
 
             // Set the HTTP headers to force the browser to download the file
