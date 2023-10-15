@@ -1,4 +1,7 @@
 <?php
+/* Start Session */
+session_start();
+
 
 /**
  * Weaver Framework - index.php
