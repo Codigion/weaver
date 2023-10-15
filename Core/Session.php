@@ -9,14 +9,6 @@
 class Session
 {
     /**
-     * Constructor. Start a new session or resume the existing session.
-     */
-    public function __construct()
-    {
-        session_start();
-    }
-
-    /**
      * Set a session variable.
      *
      * @param string $key   The session variable name.
@@ -56,5 +48,13 @@ class Session
     public static function destroy()
     {
         session_destroy();
+    }
+
+    /**
+     * Check is session exists.
+     */
+    public static function has($key)
+    {
+        return isset($_SESSION[$key]);
     }
 }

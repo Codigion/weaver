@@ -296,11 +296,6 @@ Search.appendIndex(
             "summary": "Weaver\u0020Framework\u0020\u002D\u0020Session\u0020Management\u0020Class",
             "url": "classes/Session.html"
         },                {
-            "fqsen": "\\Session\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Constructor.\u0020Start\u0020a\u0020new\u0020session\u0020or\u0020resume\u0020the\u0020existing\u0020session.",
-            "url": "classes/Session.html#method___construct"
-        },                {
             "fqsen": "\\Session\u003A\u003Aset\u0028\u0029",
             "name": "set",
             "summary": "Set\u0020a\u0020session\u0020variable.",
@@ -320,6 +315,11 @@ Search.appendIndex(
             "name": "destroy",
             "summary": "Destroy\u0020the\u0020current\u0020session.",
             "url": "classes/Session.html#method_destroy"
+        },                {
+            "fqsen": "\\Session\u003A\u003Ahas\u0028\u0029",
+            "name": "has",
+            "summary": "Check\u0020is\u0020session\u0020exists.",
+            "url": "classes/Session.html#method_has"
         },                {
             "fqsen": "\\System",
             "name": "System",
